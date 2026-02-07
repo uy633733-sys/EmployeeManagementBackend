@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// REST API + Tomcat
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// JPA + Hibernate
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Swagger (Spring Boot 4.x compatible)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0'
+
+	// Testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//MySQL Connector
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
